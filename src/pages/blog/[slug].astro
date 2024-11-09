@@ -33,7 +33,7 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image ?? image} pageType="article" showHeader={false}>
-    <ArticleStructuredData slot="structured-data" {...post.data} rawContent={post.body} />
+    <ArticleStructuredData slot="structured-data" {...post.data} body={post.body} />
     <article class="mb-16 sm:mb-24">
         {
             image && (
