@@ -87,7 +87,20 @@ const siteConfig: SiteConfig = {
             href: 'https://x.com/filippodanesi'
         }
     ],
-    socialLinks: [],
+    socialLinks: [
+        {
+            text: 'LinkedIn',
+            href: 'https://www.linkedin.com/in/filippodanesi/'
+        },
+        {
+            text: 'GitHub',
+            href: 'https://github.com/filippodanesi/'
+        },
+        {
+            text: 'Twitter',
+            href: 'https://x.com/filippodanesi'
+        }
+    ],
     hero: {
         actions: []
     },
