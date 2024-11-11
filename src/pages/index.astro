@@ -16,7 +16,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
     image={siteConfig.image}
     isHome={true}
 >
-    <BlogStructuredData slot="structured-data" />
+   <BlogStructuredData slot="structured-data" posts={posts} />
     {
         posts.length > 0 && (
             <div class="mb-16 sm:mb-24">

@@ -1,24 +1,35 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import siteConfig from '../data/site-config';
 
+interface Props {
+    posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(siteConfig.image?.src || '', Astro.site);
 
 const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
+    '@id': `${Astro.site}blog/`,
     name: siteConfig.title,
     description: siteConfig.description,
-    url: pageUrl,
+    url: pageUrl.toString(),
     inLanguage: 'en',
     image: {
         '@type': 'ImageObject',
         url: imageUrl,
-        caption: siteConfig.image?.alt
+        caption: siteConfig.image?.alt,
+        width: '1200',
+        height: '630'
     },
     publisher: {
         '@type': 'Person',
+        '@id': `${Astro.site}#identity`,
         name: 'Filippo Danesi',
+        url: Astro.site?.toString(),
         sameAs: [
             'https://www.linkedin.com/in/filippodanesi/',
             'https://github.com/filippodanesi/',
@@ -27,7 +38,9 @@ const structuredData = {
     },
     author: {
         '@type': 'Person',
+        '@id': `${Astro.site}#identity`,
         name: 'Filippo Danesi',
+        url: Astro.site?.toString(),
         sameAs: [
             'https://www.linkedin.com/in/filippodanesi/',
             'https://github.com/filippodanesi/',
@@ -56,7 +69,72 @@ const structuredData = {
             description: siteConfig.tagDescriptions['artificial-intelligence']
         }
     ],
-    keywords: ['SEO', 'Technical SEO', 'SEO News', 'SEO Strategies', 'AI', 'Search Engine Optimization']
+    keywords: ['SEO', 'Technical SEO', 'SEO News', 'SEO Strategies', 'AI', 'Search Engine Optimization'],
+    blogPost: posts.map(post => ({
+        '@type': 'BlogPosting',
+        '@id': `${new URL(post.slug, Astro.site)}#BlogPosting`,
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': new URL(post.slug, Astro.site).toString()
+        },
+        headline: post.data.title,
+        name: post.data.title,
+        description: post.data.excerpt || post.data.seo?.description || siteConfig.description,
+        datePublished: post.data.publishDate.toISOString(),
+        dateModified: (post.data.updatedDate || post.data.publishDate).toISOString(),
+        url: new URL(post.slug, Astro.site).toString(),
+        isPartOf: {
+            '@type': 'Blog',
+            '@id': `${Astro.site}blog/`,
+            name: siteConfig.title,
+            publisher: {
+                '@type': 'Person',
+                '@id': `${Astro.site}#identity`,
+                name: 'Filippo Danesi'
+            }
+        },
+        image: (post.data.image || post.data.seo?.image) ? {
+            '@type': 'ImageObject',
+            '@id': `${post.data.image?.src || post.data.seo?.image?.src}`,
+            url: (post.data.image?.src || post.data.seo?.image?.src),
+            caption: (post.data.image?.alt || post.data.seo?.image?.alt || ''),
+            width: '1200',
+            height: '630'
+        } : {
+            '@type': 'ImageObject',
+            '@id': `${siteConfig.image?.src}`,
+            url: siteConfig.image?.src || '',
+            caption: siteConfig.image?.alt || '',
+            width: '1200',
+            height: '630'
+        },
+        author: {
+            '@type': 'Person',
+            '@id': `${Astro.site}#identity`,
+            name: 'Filippo Danesi',
+            url: Astro.site?.toString(),
+            sameAs: [
+                'https://www.linkedin.com/in/filippodanesi/',
+                'https://github.com/filippodanesi/',
+                'https://x.com/filippodanesi'
+            ]
+        },
+        publisher: {
+            '@type': 'Person',
+            '@id': `${Astro.site}#identity`,
+            name: 'Filippo Danesi',
+            url: Astro.site?.toString()
+        },
+        inLanguage: 'en',
+        keywords: post.data.tags.join(', '),
+        articleSection: post.data.tags.length ? post.data.tags[0] : 'Blog',
+        isAccessibleForFree: true,
+        copyrightYear: new Date(post.data.publishDate).getFullYear(),
+        copyrightHolder: {
+            '@type': 'Person',
+            name: 'Filippo Danesi'
+        }
+    }))
 };
 ---
 
