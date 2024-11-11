@@ -1,0 +1,63 @@
+---
+import siteConfig from '../data/site-config';
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(siteConfig.image?.src || '', Astro.site);
+
+const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: siteConfig.title,
+    description: siteConfig.description,
+    url: pageUrl,
+    inLanguage: 'en',
+    image: {
+        '@type': 'ImageObject',
+        url: imageUrl,
+        caption: siteConfig.image?.alt
+    },
+    publisher: {
+        '@type': 'Person',
+        name: 'Filippo Danesi',
+        sameAs: [
+            'https://www.linkedin.com/in/filippodanesi/',
+            'https://github.com/filippodanesi/',
+            'https://x.com/filippodanesi'
+        ]
+    },
+    author: {
+        '@type': 'Person',
+        name: 'Filippo Danesi',
+        sameAs: [
+            'https://www.linkedin.com/in/filippodanesi/',
+            'https://github.com/filippodanesi/',
+            'https://x.com/filippodanesi'
+        ]
+    },
+    about: [
+        {
+            '@type': 'Thing',
+            name: 'Technical SEO',
+            description: siteConfig.tagDescriptions['technical-seo']
+        },
+        {
+            '@type': 'Thing', 
+            name: 'SEO News',
+            description: siteConfig.tagDescriptions['seo-news']
+        },
+        {
+            '@type': 'Thing',
+            name: 'SEO Strategies',
+            description: siteConfig.tagDescriptions['seo-strategies']
+        },
+        {
+            '@type': 'Thing',
+            name: 'Artificial Intelligence',
+            description: siteConfig.tagDescriptions['artificial-intelligence']
+        }
+    ],
+    keywords: ['SEO', 'Technical SEO', 'SEO News', 'SEO Strategies', 'AI', 'Search Engine Optimization']
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

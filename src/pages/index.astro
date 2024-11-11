@@ -5,7 +5,7 @@ import Button from '../components/Button.astro';
 import PostPreview from '../components/PostPreview.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
-import WebsiteStructuredData from '../components/WebsiteStructuredData.astro';
+import BlogStructuredData from '../components/BlogStructuredData.astro';
 
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5);
 ---
@@ -16,7 +16,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
     image={siteConfig.image}
     isHome={true}
 >
-    <WebsiteStructuredData slot="structured-data" />
+    <BlogStructuredData slot="structured-data" />
     {
         posts.length > 0 && (
             <div class="mb-16 sm:mb-24">
