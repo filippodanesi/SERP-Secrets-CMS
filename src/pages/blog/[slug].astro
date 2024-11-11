@@ -7,7 +7,7 @@ import PostPreview from '../../components/PostPreview.astro';
 import Subscribe from '../../components/Subscribe.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
-import ArticleStructuredData from '../../components/ArticleStructuredData.astro';
+import BlogPostingStructuredData from '../../components/BlogPostingStructuredData.astro';
 
 export const prerender = true;
 
@@ -33,7 +33,7 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image ?? image} pageType="article" showHeader={false}>
-    <ArticleStructuredData slot="structured-data" {...post.data} body={post.body} />
+    <BlogPostingStructuredData slot="structured-data" {...post.data} body={post.body} />
     <article class="mb-16 sm:mb-24">
         {
             image && (
