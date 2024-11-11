@@ -54,14 +54,14 @@ const { Content, remarkPluginFrontmatter } = await post.render();
             <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight" transition:name={`post-title-${post.slug}`}>
                 {title}
             </h1>
-            <div class="mt-4 text-sm" transition:name={`post-meta-${post.slug}`}>
+            <div class="mt-4 text-sm flex items-center flex-wrap gap-x-2" transition:name={`post-meta-${post.slug}`}>
                 <FormattedDate date={publishDate} />
                 {
                     tags.length > 0 && (
                         <>
-                            <span class="mx-2 text-neutral-500">/</span>
+                            <span class="text-neutral-500">/</span>
                             <span>in</span>
-                            <a href={`/categories/${slugify(tags[0])}`} class="ml-1 text-main hover:underline">
+                            <a href={`/categories/${slugify(tags[0])}`} class="text-main hover:underline">
                                 {tags[0]}
                             </a>
                         </>
@@ -70,7 +70,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
                 {
                     updatedDate && (
                         <>
-                            <span class="mx-2 text-neutral-500">/</span>
+                            <span class="text-neutral-500">/</span>
                             <span>
                                 (Updated on <FormattedDate date={updatedDate} />)
                             </span>
@@ -80,8 +80,8 @@ const { Content, remarkPluginFrontmatter } = await post.render();
                 {
                     remarkPluginFrontmatter.minutesRead && (
                         <>
-                            <span class="mx-2 text-neutral-500">/</span>
-                            <span class="flex items-center gap-1">
+                            <span class="text-neutral-500">/</span>
+                            <span class="inline-flex items-center gap-1 whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"/>
                                     <polyline points="12 6 12 12 16 14"/>
