@@ -61,9 +61,15 @@ const { Content, remarkPluginFrontmatter } = await post.render();
                         <>
                             <span class="text-neutral-500">/</span>
                             <span>in</span>
-                            <a href={`/categories/${slugify(tags[0])}`} class="text-main hover:underline">
-                                {tags[0]}
-                            </a>
+                            <span class="inline-flex items-center gap-1 whitespace-nowrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                </svg>
+                                <a href={`/categories/${slugify(tags[0])}`} class="text-main hover:underline">
+                                    {tags[0]}
+                                </a>
+                            </span>
                         </>
                     )
                 }
@@ -82,6 +88,10 @@ const { Content, remarkPluginFrontmatter } = await post.render();
                         <>
                             <span class="text-neutral-500">/</span>
                             <span class="inline-flex items-center gap-1 whitespace-nowrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
                                 {remarkPluginFrontmatter.minutesRead}
                             </span>
                         </>
