@@ -3,6 +3,7 @@ import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
+import { remarkReadingTime } from './remark-reading-time.mjs';
 
 export default defineConfig({
   site: 'https://www.serp-secrets.com',
@@ -12,6 +13,9 @@ export default defineConfig({
     isr: { expiration: 60 * 60 * 24 },
   }),
   trailingSlash: 'always',
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
   redirects: {
     '/archive/': '/blog/',
     '/seo-strategies/': '/categories/seo-strategies/',
