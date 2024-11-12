@@ -18,9 +18,9 @@ seo:
 
 The rise of artificial intelligence has made content creation more accessible than ever. However, search results are now saturated with shallow articles that prioritize production speed over quality. For brands, this can mean sacrificing depth and audience connection for the convenience of automation.
 
-[Google's Helpful Content Updates](https://www.serp-secrets.com/blog/adapting-to-googles-helpful-content-era/) in 2022 and 2023 sent a clear message: **content must serve people first, not search engines**. Sites that fail to follow this principle risk penalties and loss of audience trust.
+Google's Helpful Content Updates in 2022 and 2023 sent a clear message: **content must serve people first, not search engines**. Sites that fail to follow this principle risk penalties and loss of audience trust.
 
-In order to create quality [content created with people first](https://www.serp-secrets.com/blog/how-to-create-helpful-content-after-hcu/) and search engines second, it is critical to understand what Google truly considers useful to users. Google's guidelines are clear: Content should be created with **people first and search engines second**.
+In order to create quality [content created with people first](https://www.serp-secrets.com/blog/adapting-to-googles-helpful-content-era/) and search engines second, it is critical to understand what Google truly considers useful to users. Google's guidelines are clear: Content should be created with **people first and search engines second**.
 
 Let's look in detail at what this approach means.
 
