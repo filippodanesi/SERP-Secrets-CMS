@@ -62,7 +62,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
                     tags.length > 0 && (
                         <>
                             <span class="text-neutral-500">/</span>
-                            <a href={`/categories/${slugify(tags[0])}`} class="text-sky-500 dark:text-sky-400 hover:underline">{tags[0]}</a>
+                            <a href={`/categories/${slugify(tags[0])}`} class="hover:underline">{tags[0]}</a>
                         </>
                     )
                 }
