@@ -17,7 +17,6 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   redirects: {
-    '/page/2/': '/blog/page/2/',
     '/seo-strategies/': '/categories/seo-strategies/',
     '/seo-news/': '/categories/seo-news/',
     '/artificial-intelligence/': '/categories/artificial-intelligence/',
