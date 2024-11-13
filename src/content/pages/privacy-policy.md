@@ -19,7 +19,7 @@ We use Google Analytics to understand how visitors interact with our website. Th
 
 ### Cookies
 
-We use cookies on our website. For detailed information about the cookies we use, please see our [Cookie Policy](/cookie-policy).
+We use cookies on our website. For detailed information about the cookies we use, please see our [Cookie Policy](/cookie-policy/).
 
 ### Theme Preferences
 

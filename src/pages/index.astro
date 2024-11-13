@@ -25,7 +25,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
                     <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
                 ))}
                 <div class="mt-12 sm:mt-16">
-                    <Button href="/blog">View All Posts</Button>
+                    <Button href="/blog/">View All Posts</Button>
                 </div>
             </div>
         )
