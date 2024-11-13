@@ -11,7 +11,7 @@ const { page, class: className } = Astro.props;
         page.url.prev && (
             <IconButton
                 class="absolute left-0 top-1/2 -translate-y-1/2"
-                href={page.url.prev}
+                href={`${page.url.prev}/`}
                 aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
             >
                 <ArrowLeft class="w-5 h-5 fill-current" />
@@ -23,7 +23,7 @@ const { page, class: className } = Astro.props;
         page.url.next && (
             <IconButton
                 class="absolute right-0 top-1/2 -translate-y-1/2"
-                href={page.url.next}
+                href={`${page.url.next}/`}
                 aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
             >
                 <ArrowRight class="w-5 h-5 fill-current" />
