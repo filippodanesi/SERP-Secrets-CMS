@@ -17,28 +17,37 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   redirects: {
+    // Old redirects
     '/archive/': '/blog/',
     '/seo-strategies/': '/categories/seo-strategies/',
     '/seo-news/': '/categories/seo-news/',
     '/artificial-intelligence/': '/categories/artificial-intelligence/',
     '/technical-seo/': '/categories/technical-seo/',
     '/contact-me/': '/contact/',
+    
+    // Old article redirects
     '/artificial-intelligence/will-artificial-intelligence-replace-humans/': '/blog/artificial-intelligence/will-artificial-intelligence-replace-humans/',
     '/technical-seo/advanced-strategies-for-schema-markup-optimization/': '/blog/technical-seo/advanced-strategies-for-schema-markup-optimization/',
     '/seo-news/what-is-googles-search-generative-experience/': '/blog/seo-news/what-is-googles-search-generative-experience/',
     '/posts/how-to-use-ai-in-seo-forecasting/': '/blog/posts/how-to-use-ai-in-seo-forecasting/',
     '/seo-strategies/adapting-to-googles-helpful-content-era/': '/blog/seo-strategies/adapting-to-googles-helpful-content-era/',
-    '/seo-strategies/how-to-use-ai-in-seo-forecasting/': '/blog/seo-strategies/how-to-use-ai-in-seo-forecasting/',
-    '/technical-seo/understanding-shadow-dom-for-a-optimized-indexing/': '/blog/technical-seo/understanding-shadow-dom-for-a-optimized-indexing/',
-    '/seo-strategies/seo-in-2024-trends-tips-strategies-guide/': '/blog/seo-strategies/seo-in-2024-trends-tips-strategies-guide/',
-    '/seo-strategies/optimizing-content-for-google-search-generative-experience/': '/blog/seo-strategies/optimizing-content-for-google-search-generative-experience/',
-    '/seo-strategies/how-to-use-lsi-keywords-in-seo/': '/blog/seo-strategies/how-to-use-lsi-keywords-in-seo/',
-    '/seo-news/in-depth-analysis-of-googles-march-2024-updates/': '/blog/seo-news/in-depth-analysis-of-googles-march-2024-updates/',
-    '/technical-seo/mastering-bert-in-seo-for-better-semantic-insight/': '/blog/technical-seo/mastering-bert-in-seo-for-better-semantic-insight/',
-    '/seo-strategies/training-search-engines-the-next-evolution-of-seo/': '/blog/seo-strategies/training-search-engines-the-next-evolution-of-seo/',
-    '/seo-news/seo-2025-upcoming-changes-and-how-to-adapt/': '/blog/seo-news/seo-2025-upcoming-changes-and-how-to-adapt/',
-    '/artificial-intelligence/the-future-of-seo-if-chatgpt-kills-search-engines/': '/blog/artificial-intelligence/the-future-of-seo-if-chatgpt-kills-search-engines/',
-    '/seo-news/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/': '/blog/seo-news/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/'
+    
+    // New redirects
+    '/blog/technical-seo/advanced-strategies-for-schema-markup-optimization/': '/blog/advanced-strategies-for-schema-markup-optimization/',
+    '/blog/posts/how-to-use-ai-in-seo-forecasting/': '/blog/how-to-use-ai-in-seo-forecasting/',
+    '/blog/seo-strategies/how-to-use-ai-in-seo-forecasting/': '/blog/how-to-use-ai-in-seo-forecasting/',
+    '/blog/technical-seo/understanding-shadow-dom-for-a-optimized-indexing/': '/blog/understanding-shadow-dom-for-a-optimized-indexing/',
+    '/blog/seo-strategies/seo-in-2024-trends-tips-strategies-guide/': '/blog/seo-in-2024-trends-tips-strategies-guide/',
+    '/blog/seo-strategies/optimizing-content-for-google-search-generative-experience/': '/blog/optimizing-content-for-google-search-generative-experience/',
+    '/blog/seo-news/in-depth-analysis-of-googles-march-2024-updates/': '/blog/in-depth-analysis-of-googles-march-2024-updates/',
+    '/blog/technical-seo/mastering-bert-in-seo-for-better-semantic-insight/': '/blog/mastering-bert-in-seo-for-better-semantic-insight/',
+    '/blog/seo-strategies/training-search-engines-the-next-evolution-of-seo/': '/blog/training-search-engines-the-next-evolution-of-seo/',
+    '/blog/seo-news/seo-2025-upcoming-changes-and-how-to-adapt/': '/blog/seo-2025-upcoming-changes-and-how-to-adapt/',
+    '/blog/artificial-intelligence/the-future-of-seo-if-chatgpt-kills-search-engines/': '/blog/the-future-of-seo-if-chatgpt-kills-search-engines/',
+    '/blog/seo-news/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/': '/blog/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/',
+    
+    // Pagination redirects
+    '/page/2/': '/blog/page/2/'
   },
   integrations: [
     sitemap(),
