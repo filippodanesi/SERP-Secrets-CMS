@@ -6,12 +6,12 @@ export const GET: APIRoute = async ({ site }) => {
    const blog = await getCollection('blog');
    const pages = await getCollection('pages');
    const staticPaths = [
-       ...siteConfig.headerNavLinks?.map(link => link.href) || [],
-       ...siteConfig.footerNavLinks?.filter(link => !link.href.startsWith('http')).map(link => link.href) || []
+       ...siteConfig.headerNavLinks?.map(link => link.href.endsWith('/') ? link.href : `${link.href}/`) || [],
+       ...siteConfig.footerNavLinks?.filter(link => !link.href.startsWith('http')).map(link => link.href.endsWith('/') ? link.href : `${link.href}/`) || []
    ];
 
    const uniquePaths = [...new Set([
-       ...staticPaths.map(path => path.endsWith('/') ? path : `${path}/`),
+       ...staticPaths,
        ...blog.map(post => `/blog/${post.slug}/`),
        ...pages.map(page => `/${page.slug}/`)
    ])];
@@ -26,7 +26,7 @@ export const GET: APIRoute = async ({ site }) => {
                return `
                    <url>
                        <loc>${site?.origin}${path}</loc>
-                       <lastmod>${(post?.data.publishDate || page?.data.publishDate || new Date()).toISOString()}</lastmod>
+                       <lastmod>${post?.data.publishDate?.toISOString() || page?.data.publishDate?.toISOString() || new Date().toISOString()}</lastmod>
                    </url>
                `;
            }).join('')}
