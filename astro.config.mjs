@@ -47,7 +47,6 @@ export default defineConfig({
     '/blog/seo-news/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/': '/blog/the-future-of-seo-navigating-a-world-where-chatgpt-reigns-supreme/',
   },
   integrations: [
-    sitemap(),
     tailwind({ applyBaseStyles: false }),
     jopSoftwarecookieconsent({
       mode: 'opt-in',
