@@ -1,4 +1,4 @@
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async ({ site }) => {
     const blog = await getCollection('blog');
     const pages = await getCollection('pages');
     const staticPaths = [
@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ request }) => {
       ...blog.map(post => `/blog/${post.slug}/`),
       ...pages.map(page => `/${page.slug}/`)
     ])];
-    const origin = new URL(request.url).origin;
+   
     const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${uniquePaths.map(path => {
@@ -21,12 +21,13 @@ export const GET: APIRoute = async ({ request }) => {
           const lastmod = publishDate ? new Date(publishDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
           return `
             <url>
-              <loc>${origin}${path}</loc>
+              <loc>${site}${path}</loc>
               <lastmod>${lastmod}</lastmod>
             </url>
           `;
         }).join('')}
       </urlset>`.trim();
+   
     return new Response(xmlString, {
       headers: {
         'Content-Type': 'application/xml',
