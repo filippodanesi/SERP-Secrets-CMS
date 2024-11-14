@@ -69,8 +69,8 @@ export default defineConfig({
           position: "bottom left",
           equalWeightButtons: true,
           flipButtons: false,
-          hideButtonClose: false,  // Mostra il pulsante X
-          buttonClose: true       // Abilita la funzionalità del pulsante di chiusura
+          hideButtonClose: false,
+          buttonClose: true
         },
         preferencesModal: {
           layout: "box",
@@ -119,7 +119,7 @@ export default defineConfig({
               acceptAllBtn: "Accept all",
               acceptNecessaryBtn: "Reject all",
               showPreferencesBtn: "Manage preferences",
-              closeIconLabel: "Close modal and reject all cookies", // Etichetta per il pulsante X
+              closeIconLabel: "Close modal and reject all cookies",
               footer: '<a href="/privacy-policy" class="cc-link">Privacy Policy</a>\n<a href="/cookie-policy" class="cc-link">Cookie Policy</a>'
             },
             preferencesModal: {
