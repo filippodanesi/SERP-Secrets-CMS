@@ -14,13 +14,13 @@ export const GET: APIRoute = async ({ site }) => {
             ${blog.map(post => `
                 <url>
                     <loc>${site?.origin}/blog/${post.slug}</loc>
-                    <lastmod>${post.data.lastUpdated?.toISOString().split('T')[0] || post.data.publishDate?.toISOString().split('T')[0]}</loc>
+                    <lastmod>${post.data.lastUpdated?.toISOString().split('T')[0] || post.data.publishDate?.toISOString().split('T')[0]}</lastmod>
                 </url>
             `).join('')}
             ${pages.map(page => `
                 <url>
                     <loc>${site?.origin}/${page.slug}</loc>
-                    <lastmod>${page.data.lastUpdated?.toISOString().split('T')[0]}</loc>
+                    <lastmod>${page.data.lastUpdated?.toISOString().split('T')[0]}</lastmod>
                 </url>
             `).join('')}
         </urlset>`.trim();
