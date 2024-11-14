@@ -68,9 +68,7 @@ export default defineConfig({
           layout: "box inline",
           position: "bottom left",
           equalWeightButtons: true,
-          flipButtons: false,
-          hideButtonClose: false,
-          buttonClose: true
+          flipButtons: false
         },
         preferencesModal: {
           layout: "box",
@@ -119,7 +117,6 @@ export default defineConfig({
               acceptAllBtn: "Accept all",
               acceptNecessaryBtn: "Reject all",
               showPreferencesBtn: "Manage preferences",
-              closeIconLabel: "Close modal and reject all cookies",
               footer: '<a href="/privacy-policy" class="cc-link">Privacy Policy</a>\n<a href="/cookie-policy" class="cc-link">Cookie Policy</a>'
             },
             preferencesModal: {
