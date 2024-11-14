@@ -10,26 +10,26 @@ export const GET: APIRoute = async ({ site }) => {
        ...siteConfig.footerNavLinks?.filter(link => !link.href.startsWith('http')).map(link => link.href) || []
    ];
 
+   const uniquePaths = [...new Set([
+       ...staticPaths.map(path => path.endsWith('/') ? path : `${path}/`),
+       ...blog.map(post => `/blog/${post.slug}/`),
+       ...pages.map(page => `/${page.slug}/`)
+   ])];
+
    const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-           ${staticPaths.map(path => `
-               <url>
-                   <loc>${site?.origin}${path.endsWith('/') ? path : `${path}/`}</loc>
-                   <lastmod>${new Date().toISOString()}</lastmod>
-               </url>
-           `).join('')}
-           ${blog.map(post => `
-               <url>
-                   <loc>${site?.origin}/blog/${post.slug}/</loc>
-                   <lastmod>${post.data.publishDate?.toISOString()}</lastmod>
-               </url>
-           `).join('')}
-           ${pages.map(page => `
-               <url>
-                   <loc>${site?.origin}/${page.slug}/</loc>
-                   <lastmod>${page.data.publishDate?.toISOString() || new Date().toISOString()}</lastmod>
-               </url>
-           `).join('')}
+           ${uniquePaths.map(path => {
+               const isPost = path.startsWith('/blog/');
+               const post = isPost ? blog.find(p => `/blog/${p.slug}/` === path) : null;
+               const page = !isPost ? pages.find(p => `/${p.slug}/` === path) : null;
+               
+               return `
+                   <url>
+                       <loc>${site?.origin}${path}</loc>
+                       <lastmod>${(post?.data.publishDate || page?.data.publishDate || new Date()).toISOString()}</lastmod>
+                   </url>
+               `;
+           }).join('')}
        </urlset>`.trim();
 
    return new Response(xmlString, {
