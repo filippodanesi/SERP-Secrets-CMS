@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel/serverless';
-import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
 import { remarkReadingTime } from './remark-reading-time.mjs';
