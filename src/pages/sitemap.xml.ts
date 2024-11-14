@@ -14,20 +14,20 @@ export const GET: APIRoute = async ({ site }) => {
        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
            ${staticPaths.map(path => `
                <url>
-                   <loc>${site?.origin}${path}</loc>
-                   <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+                   <loc>${site?.origin}${path.endsWith('/') ? path : `${path}/`}</loc>
+                   <lastmod>${new Date().toISOString()}</lastmod>
                </url>
            `).join('')}
            ${blog.map(post => `
                <url>
-                   <loc>${site?.origin}/blog/${post.slug}</loc>
-                   <lastmod>${post.data.publishDate?.toISOString().split('T')[0]}</lastmod>
+                   <loc>${site?.origin}/blog/${post.slug}/</loc>
+                   <lastmod>${post.data.publishDate?.toISOString()}</lastmod>
                </url>
            `).join('')}
            ${pages.map(page => `
                <url>
-                   <loc>${site?.origin}/${page.slug}</loc>
-                   <lastmod>${page.data.publishDate?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0]}</lastmod>
+                   <loc>${site?.origin}/${page.slug}/</loc>
+                   <lastmod>${page.data.publishDate?.toISOString() || new Date().toISOString()}</lastmod>
                </url>
            `).join('')}
        </urlset>`.trim();
