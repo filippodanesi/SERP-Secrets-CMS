@@ -1,5 +1,6 @@
 ---
 title: Privacy Policy
+publishDate: '2024-11-09'
 seo:
   title: Privacy Policy
   description: Information about how we collect and handle your data on our website.

@@ -1,5 +1,6 @@
 ---
 title: Cookie Policy
+publishDate: '2024-11-09'
 seo:
   title: Cookie Policy
   description: Our Cookie Policy explains what cookies are and how we use them on our website.
