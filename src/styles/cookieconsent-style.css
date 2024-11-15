@@ -4,7 +4,7 @@ html.cc--darkmode #cc-main {
 
     --cc-bg: #171717;
     --cc-primary-color: rgb(242, 241, 236);
-    --cc-secondary-color: #F8F8F8;
+    --cc-secondary-color: #F2F1EC;
 
     --cc-btn-primary-bg: #ffffff;
     --cc-btn-primary-color: #171717;
@@ -59,7 +59,7 @@ html.cc--darkmode #cc-main .section__toggle:checked~.toggle__icon {
 #cc-main {
     color-scheme: light;
 
-    --cc-bg: #F8F8F8;
+    --cc-bg: #F2F1EC;
     --cc-primary-color: #171717;
     --cc-secondary-color: #171717;
 
