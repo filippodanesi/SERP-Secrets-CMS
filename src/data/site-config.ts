@@ -45,7 +45,7 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     title: 'SERPsecrets',
-    subtitle: 'SEO Analysis, Strategies & AI Insights',
+    subtitle: 'Can’t reveal marketing’s mysteries, but happy to share my knowledge in SEO & AI.',
     description: 'A personal take on SEO news, strategies, and AI insights. Practical analysis to help you optimize your online presence in a changing digital world.',
     image: {
         src: '/og-image.webp',
