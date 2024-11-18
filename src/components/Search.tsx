@@ -28,7 +28,7 @@ export default function Search({ posts }: SearchProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search articles..."
-          className="w-full p-4 text-sm bg-[rgb(var(--color-bg-main))] border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[rgb(var(--color-border-main))] font-serif italic placeholder-[rgb(var(--color-text-main))/60]"
+          className="w-full p-4 text-sm bg-[rgb(var(--color-bg-main))] border border-gray-200 rounded-lg focus:outline-none font-serif italic placeholder-[rgb(var(--color-text-main))/60]"
           aria-label="Search articles"
         />
       </div>
