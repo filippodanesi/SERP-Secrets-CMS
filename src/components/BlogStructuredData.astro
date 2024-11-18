@@ -8,6 +8,18 @@ interface Props {
 
 const { posts } = Astro.props;
 
+const personInfo = {
+    '@type': 'Person',
+    '@id': `${Astro.site}#identity`,
+    name: 'Filippo Danesi',
+    url: Astro.site?.toString(),
+    sameAs: [
+        'https://www.linkedin.com/in/filippodanesi/',
+        'https://github.com/filippodanesi/',
+        'https://x.com/filippodanesi'
+    ]
+};
+
 const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
@@ -16,43 +28,16 @@ const structuredData = {
     description: siteConfig.description,
     url: Astro.site?.toString(),
     inLanguage: 'en',
-    keywords: [
-        'SEO',
-        'Technical SEO',
-        'SEO News',
-        'SEO Strategies',
-        'AI',
-        'Search Engine Optimization'
-    ].flatMap(keyword => ({ keywords: keyword })),
+    keywords: ['Technical Seo', 'Seo News', 'Seo Strategies', 'Artificial Intelligence'],
     image: {
         '@type': 'ImageObject',
-        url: new URL(siteConfig.image?.src || '', Astro.site).toString(),
+        url: `${Astro.site}${siteConfig.image?.src.replace('/', '')}`,
         caption: siteConfig.image?.alt,
         width: '1200',
         height: '630'
     },
-    publisher: {
-        '@type': 'Person',
-        '@id': `${Astro.site}#identity`,
-        name: 'Filippo Danesi',
-        url: Astro.site?.toString(),
-        sameAs: [
-            'https://www.linkedin.com/in/filippodanesi/',
-            'https://github.com/filippodanesi/',
-            'https://x.com/filippodanesi'
-        ]
-    },
-    author: {
-        '@type': 'Person',
-        '@id': `${Astro.site}#identity`,
-        name: 'Filippo Danesi',
-        url: Astro.site?.toString(),
-        sameAs: [
-            'https://www.linkedin.com/in/filippodanesi/',
-            'https://github.com/filippodanesi/',
-            'https://x.com/filippodanesi'
-        ]
-    },
+    publisher: personInfo,
+    author: personInfo,
     about: [
         {
             '@type': 'Thing',
@@ -77,21 +62,21 @@ const structuredData = {
     ],
     blogPost: posts.map(post => ({
         '@type': 'BlogPosting',
-        '@id': `${new URL(post.slug, Astro.site)}#BlogPosting`,
+        '@id': `${Astro.site}blog/${post.slug}#BlogPosting`,
         headline: post.data.title,
         name: post.data.title,
-        description: post.data.excerpt || post.data.seo?.description || siteConfig.description,
+        description: post.data.excerpt,
         datePublished: post.data.publishDate.toISOString(),
         dateModified: (post.data.updatedDate || post.data.publishDate).toISOString(),
-        url: new URL(post.slug, Astro.site).toString(),
+        url: `${Astro.site}blog/${post.slug}`,
         inLanguage: 'en',
-        keywords: post.data.tags[0],
+        keywords: post.data.tags,
         articleSection: post.data.tags[0],
         isAccessibleForFree: 'http://schema.org/True',
         copyrightYear: new Date(post.data.publishDate).getFullYear(),
         mainEntityOfPage: {
             '@type': 'WebPage',
-            '@id': new URL(post.slug, Astro.site).toString()
+            '@id': `${Astro.site}blog/${post.slug}`
         },
         isPartOf: {
             '@type': 'Blog',
@@ -99,33 +84,13 @@ const structuredData = {
         },
         image: {
             '@type': 'ImageObject',
-            '@id': `${Astro.site}`,
-            url: `${Astro.site}`,
+            url: `${Astro.site}${post.data.seo?.image?.src.replace('/', '')}`,
+            alt: post.data.seo?.image?.alt,
             width: '1200',
             height: '630'
         },
-        author: {
-            '@type': 'Person',
-            '@id': `${Astro.site}#identity`,
-            name: 'Filippo Danesi',
-            url: Astro.site?.toString(),
-            sameAs: [
-                'https://www.linkedin.com/in/filippodanesi/',
-                'https://github.com/filippodanesi/',
-                'https://x.com/filippodanesi'
-            ]
-        },
-        publisher: {
-            '@type': 'Person',
-            '@id': `${Astro.site}#identity`,
-            name: 'Filippo Danesi',
-            url: Astro.site?.toString(),
-            sameAs: [
-                'https://www.linkedin.com/in/filippodanesi/',
-                'https://github.com/filippodanesi/',
-                'https://x.com/filippodanesi'
-            ]
-        },
+        author: personInfo,
+        publisher: personInfo,
         copyrightHolder: {
             '@type': 'Person',
             name: 'Filippo Danesi'

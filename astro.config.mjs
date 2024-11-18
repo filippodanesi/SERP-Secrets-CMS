@@ -3,6 +3,7 @@ import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
+import react from '@astrojs/react';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 
 export default defineConfig({
@@ -49,6 +50,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     tailwind({ applyBaseStyles: false }),
+    react(),
     jopSoftwarecookieconsent({
       mode: 'opt-in',
       autoShow: true,
