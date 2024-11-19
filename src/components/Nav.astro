@@ -8,7 +8,7 @@ import siteConfig from '../data/site-config';
 const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.href !== '/search');
 ---
 
-<nav class="min-h-10 pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8">
+<nav class="min-h-10 pt-4 relative sm:min-h-14 md:pt-8">
     <!-- Mobile Navigation -->
     <div class="md:hidden w-full max-w-3xl mx-auto relative">
         <div class="flex justify-between items-center">
@@ -96,6 +96,11 @@ const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.h
                 </ul>
             </div>
         )}
+    </div>
+
+    {/* Divider - coerente con il footer */}
+    <div class="w-full max-w-3xl mx-auto">
+        <div class="border-b border-solid border-main mt-12 mb-8 sm:mt-24"></div>
     </div>
 </nav>
 
