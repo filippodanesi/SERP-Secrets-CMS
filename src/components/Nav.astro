@@ -8,8 +8,7 @@ import siteConfig from '../data/site-config';
 const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.href !== '/search');
 ---
 
-<!-- Wrapper per gestire il border e lo spacing -->
-<div class="relative">
+<div class="relative" data-post-layout>
     <nav class="min-h-10 pt-4 md:pt-8">
         <div class="w-full max-w-3xl mx-auto">
             <!-- Mobile Navigation -->
@@ -102,13 +101,9 @@ const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.h
             </div>
         </div>
     </nav>
-    
-    <!-- Separatore con spazi bilanciati -->
-    <div class="w-full max-w-3xl mx-auto">
-        <div class="py-8 sm:py-12">
-            <div class="border-b border-solid border-main"></div>
-        </div>
-    </div>
+
+    <!-- Separatore visibile solo nei post del blog -->
+    <div class="border-b border-solid border-main w-screen absolute bottom-0 left-1/2 -translate-x-1/2"></div>
 </div>
 
 <style>
@@ -155,6 +150,15 @@ const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.h
         .menu-toggle.is-active .menu-toggle-icon:after {
             @apply -rotate-45;
         }
+    }
+
+    /* Stili per il separatore nei post */
+    [data-post-layout] .border-b {
+        display: none;
+    }
+
+    :global(.is-post) [data-post-layout] .border-b {
+        display: block;
     }
 </style>
 
