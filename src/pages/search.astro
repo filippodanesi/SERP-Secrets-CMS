@@ -12,7 +12,10 @@ const posts = allPosts.map((post: CollectionEntry<'blog'>) => ({
   body: post.body
 }));
 
-const title = "Search";
+const meta = {
+  title: "Search",
+  noindex: true
+};
 ---
 
 <BaseLayout title={title} showHeader={false}>
