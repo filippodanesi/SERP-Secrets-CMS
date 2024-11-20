@@ -8,7 +8,7 @@ import siteConfig from '../data/site-config';
 const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.href !== '/search');
 ---
 
-<nav class="min-h-10 pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8 w-full">
+<nav class="min-h-10 pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8">
     <!-- Mobile Navigation -->
     <div class="md:hidden w-full max-w-3xl mx-auto relative">
         <div class="flex justify-between items-center">
@@ -97,7 +97,6 @@ const navLinks = (siteConfig.headerNavLinks ?? []).filter((link: Link) => link.h
             </div>
         )}
     </div>
-    <div class="absolute bottom-0 left-0 right-0 border-b border-solid border-main"></div>
 </nav>
 
 <style>
