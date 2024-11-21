@@ -3,112 +3,99 @@ import type { CollectionEntry } from 'astro:content';
 import siteConfig from '../data/site-config';
 
 interface Props {
-   posts: CollectionEntry<'blog'>[];
+    posts: CollectionEntry<'blog'>[];
 }
 
 const { posts } = Astro.props;
 
 const personInfo = {
-   '@type': 'Person',
-   '@id': `${Astro.site}#identity`,
-   name: 'Filippo Danesi',
-   url: Astro.site?.toString(),
-   sameAs: [
-       'https://www.linkedin.com/in/filippodanesi/',
-       'https://github.com/filippodanesi/',
-       'https://x.com/filippodanesi'
-   ]
-};
-
-const getWordCount = (content: string) => {
-  return content
-      .replace(/\s+/g, ' ')
-      .replace(/[^\w\s]/g, '')
-      .trim()
-      .split(' ')
-      .filter(word => word.length > 0)
-      .length;
+    '@type': 'Person',
+    '@id': `${Astro.site}#identity`,
+    name: 'Filippo Danesi',
+    url: Astro.site?.toString(),
+    sameAs: [
+        'https://www.linkedin.com/in/filippodanesi/',
+        'https://github.com/filippodanesi/',
+        'https://x.com/filippodanesi'
+    ]
 };
 
 const structuredData = {
-   '@context': 'https://schema.org',
-   '@type': 'Blog',
-   '@id': `${Astro.site}blog/`,
-   name: siteConfig.title,
-   description: siteConfig.description,
-   url: Astro.site?.toString(),
-   inLanguage: 'en',
-   keywords: ['Technical Seo', 'Seo News', 'Seo Strategies', 'Artificial Intelligence'],
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${Astro.site}blog/`,
+    name: siteConfig.title,
+    description: siteConfig.description,
+    url: Astro.site?.toString(),
+    inLanguage: 'en',
+    keywords: ['Technical Seo', 'Seo News', 'Seo Strategies', 'Artificial Intelligence'],
     image: {
         '@type': 'ImageObject',
-        url: `${Astro.site}${post.data.seo?.image?.src.replace('/', '')}`,
-        caption: post.data.seo?.image?.alt ?? '',
+        url: `${Astro.site}${siteConfig.image?.src.replace('/', '')}`,
+        caption: siteConfig.image?.alt,
         width: '1200',
         height: '630'
     },
-isAccessibleForFree: true,
-   publisher: personInfo,
-   author: personInfo,
-   about: [
-       {
-           '@type': 'Thing',
-           name: 'Technical SEO',
-           description: siteConfig.tagDescriptions['technical-seo']
-       },
-       {
-           '@type': 'Thing',
-           name: 'SEO News',
-           description: siteConfig.tagDescriptions['seo-news']
-       },
-       {
-           '@type': 'Thing',
-           name: 'SEO Strategies',
-           description: siteConfig.tagDescriptions['seo-strategies']
-       },
-       {
-           '@type': 'Thing',
-           name: 'Artificial Intelligence',
-           description: siteConfig.tagDescriptions['artificial-intelligence']
-       }
-   ],
-   blogPost: posts.map(post => {
-       const postImage = post.data.seo?.image?.src ? {
-           '@type': 'ImageObject',
-           url: `${Astro.site}${post.data.seo.image.src.replace('/', '')}`,
-           alt: post.data.seo.image.alt ?? '',
-           width: '1200',
-           height: '630'
-       } : structuredData.image;
-
-       return {
-           '@type': 'BlogPosting',
-           '@id': `${Astro.site}blog/${post.slug}#BlogPosting`,
-           headline: post.data.title,
-           name: post.data.title,
-           description: post.data.excerpt,
-           datePublished: post.data.publishDate.toISOString(),
-           dateModified: (post.data.updatedDate || post.data.publishDate).toISOString(),
-           url: `${Astro.site}blog/${post.slug}`,
-           inLanguage: 'en',
-           keywords: post.data.tags,
-           articleSection: post.data.tags[0],
-           wordCount: post.body ? getWordCount(post.body) : undefined,
-           isAccessibleForFree: 'http://schema.org/True',
-           copyrightYear: new Date(post.data.publishDate).getFullYear(),
-           mainEntityOfPage: {
-               '@type': 'WebPage',
-               '@id': `${Astro.site}blog/${post.slug}`
-           },
-           isPartOf: {
-               '@type': 'Blog',
-               '@id': `${Astro.site}blog/`
-           },
-           image: postImage,
-           author: personInfo,
-           publisher: personInfo,
-           copyrightHolder: personInfo
-       };
-   })
+    publisher: personInfo,
+    author: personInfo,
+    about: [
+        {
+            '@type': 'Thing',
+            name: 'Technical SEO',
+            description: siteConfig.tagDescriptions['technical-seo']
+        },
+        {
+            '@type': 'Thing',
+            name: 'SEO News',
+            description: siteConfig.tagDescriptions['seo-news']
+        },
+        {
+            '@type': 'Thing',
+            name: 'SEO Strategies',
+            description: siteConfig.tagDescriptions['seo-strategies']
+        },
+        {
+            '@type': 'Thing',
+            name: 'Artificial Intelligence',
+            description: siteConfig.tagDescriptions['artificial-intelligence']
+        }
+    ],
+    blogPost: posts.map(post => ({
+        '@type': 'BlogPosting',
+        '@id': `${Astro.site}blog/${post.slug}#BlogPosting`,
+        headline: post.data.title,
+        name: post.data.title,
+        description: post.data.excerpt,
+        datePublished: post.data.publishDate.toISOString(),
+        dateModified: (post.data.updatedDate || post.data.publishDate).toISOString(),
+        url: `${Astro.site}blog/${post.slug}`,
+        inLanguage: 'en',
+        keywords: post.data.tags,
+        articleSection: post.data.tags[0],
+        isAccessibleForFree: 'http://schema.org/True',
+        copyrightYear: new Date(post.data.publishDate).getFullYear(),
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `${Astro.site}blog/${post.slug}`
+        },
+        isPartOf: {
+            '@type': 'Blog',
+            '@id': `${Astro.site}blog/`
+        },
+        image: {
+            '@type': 'ImageObject',
+            url: `${Astro.site}${post.data.seo?.image?.src.replace('/', '')}`,
+            alt: post.data.seo?.image?.alt,
+            width: '1200',
+            height: '630'
+        },
+        author: personInfo,
+        publisher: personInfo,
+        copyrightHolder: {
+            '@type': 'Person',
+            name: 'Filippo Danesi'
+        }
+    }))
 };
 ---
 
