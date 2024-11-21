@@ -13,7 +13,11 @@ const posts = allPosts.map((post: CollectionEntry<'blog'>) => ({
 }));
 
 const title = "Search";
-const metaTags = [{ name: 'robots', content: 'noindex' }];
+
+const metaTags = {
+  title: title,
+  robots: "noindex, nofollow"
+};
 ---
 
 <BaseLayout title={title} showHeader={false} metaTags={metaTags}>

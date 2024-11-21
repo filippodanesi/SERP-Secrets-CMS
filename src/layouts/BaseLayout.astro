@@ -8,19 +8,31 @@ import AboutStructuredData from '../components/AboutStructuredData.astro';
 import ContactPageStructuredData from '../components/ContactPageStructuredData.astro';
 import '../styles/cookieconsent-style.css';
 
-export type Props = HeadProps & { showHeader?: boolean };
+export type Props = HeadProps & { 
+    showHeader?: boolean;
+    metaTags?: {
+        title?: string;
+        description?: string;
+        robots?: string;
+    }
+};
 
-const { showHeader = true, ...head } = Astro.props;
+const { showHeader = true, metaTags, ...head } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const isAboutPage = pathname === '/about' || pathname === '/about/';
 const isContactPage = pathname === '/contact' || pathname === '/contact/';
+
+const headProps = {
+    ...head,
+    ...metaTags
+};
 ---
 
 <!doctype html>
 <html lang="en" class="antialiased break-words">
     <head>
-        <BaseHead {...head} />
+        <BaseHead {...headProps} />
         {isAboutPage && <AboutStructuredData />}
         {isContactPage && <ContactPageStructuredData />}
         <slot name="structured-data" />

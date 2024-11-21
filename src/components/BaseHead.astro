@@ -16,19 +16,21 @@ const {
     description = '', 
     image = siteConfig.image, 
     pageType = 'website',
-    isHome = false  // default a false
+    isHome = false,
+    robots = 'max-image-preview:large'
 } = Astro.props;
 
-// Modifica la logica del titolo
 const title = isHome 
     ? Astro.props.title 
     : [Astro.props.title, siteConfig.title].filter(Boolean).join(' — ');
+
 const resolvedImage = image?.src
     ? {
           src: new URL(image.src, Astro.site).toString(),
           alt: image.alt
       }
     : undefined;
+
 const canonicalURL = new URL(Astro.request.url, Astro.site);
 
 /**
@@ -39,11 +41,9 @@ const canonicalURL = new URL(Astro.request.url, Astro.site);
 function formatCanonicalURL(url: string | URL) {
     let path = url.toString();
     const hasQueryParams = path.includes('?');
-    // Rimuove la slash finale solo se ci sono parametri di query
     if (hasQueryParams) {
         path = path.replace(/\/$/, '');
     } else {
-        // Aggiunge una slash finale se non c'è
         path = path.endsWith('/') ? path : `${path}/`;
     }
     return path;
@@ -53,13 +53,12 @@ function formatCanonicalURL(url: string | URL) {
 <!-- High Priority Global Metadata -->
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content={robots} />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
 <!-- Google Analytics -->
-<!-- GA Script Tag -->
 <script 
     type="text/plain"
     data-category="analytics"
@@ -68,7 +67,6 @@ function formatCanonicalURL(url: string | URL) {
     crossorigin="anonymous">
 </script>
 
-<!-- GA Configuration -->
 <script 
     type="text/plain"
     data-category="analytics"
