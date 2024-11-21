@@ -39,13 +39,14 @@ const structuredData = {
    url: Astro.site?.toString(),
    inLanguage: 'en',
    keywords: ['Technical Seo', 'Seo News', 'Seo Strategies', 'Artificial Intelligence'],
-   image: {
-       '@type': 'ImageObject',
-       url: `${Astro.site}${siteConfig.image?.src.replace('/', '')}`,
-       caption: siteConfig.image?.alt,
-       width: '1200',
-       height: '630'
-   },
+    image: {
+        '@type': 'ImageObject',
+        url: `${Astro.site}${post.data.seo?.image?.src.replace('/', '')}`,
+        caption: post.data.seo?.image?.alt ?? '',
+        width: '1200',
+        height: '630'
+    },
+isAccessibleForFree: true,
    publisher: personInfo,
    author: personInfo,
    about: [
