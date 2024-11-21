@@ -10,21 +10,31 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
 
 const getArticleSection = (tags: string[]) => {
    if (!tags.length) return 'Blog';
-   
    const primaryTag = tags[0];
-   return /^[A-Z]/.test(primaryTag) 
-       ? primaryTag 
-       : primaryTag.split('-').map(word => word.toUpperCase()).join(' ');
+   return /^[A-Z]/.test(primaryTag) ? primaryTag : primaryTag.split('-').map(word => word.toUpperCase()).join(' ');
 };
 
 const getWordCount = (content: string) => {
-   return content
-       .replace(/\s+/g, ' ')
-       .replace(/[^\w\s]/g, '')
-       .trim()
-       .split(' ')
-       .filter(word => word.length > 0)
-       .length;
+   return content.replace(/\s+/g, ' ').replace(/[^\w\s]/g, '').trim().split(' ').filter(word => word.length > 0).length;
+};
+
+const personInfo = {
+    '@type': 'Person',
+    '@id': `${Astro.site}#identity`,
+    'name': 'Filippo Danesi',
+    'url': Astro.site?.toString(),
+    'sameAs': [
+        'https://www.linkedin.com/in/filippodanesi/',
+        'https://github.com/filippodanesi/',
+        'https://x.com/filippodanesi'
+    ],
+    'image': {
+        '@type': 'ImageObject',
+        '@id': `${Astro.site}og-image.webp`,
+        'url': `${Astro.site}og-image.webp`,
+        'width': '1200',
+        'height': '630'
+    }
 };
 
 const wordCount = body ? getWordCount(body) : 0;
@@ -47,59 +57,28 @@ const structuredData = {
        '@type': 'Blog',
        '@id': `${Astro.site}blog/`,
        'name': siteConfig.title,
-       'publisher': {
-           '@type': 'Person',
-           '@id': `${Astro.site}#identity`,
-           'name': 'Filippo Danesi'
-       }
+       'publisher': personInfo
    },
    'image': {
        '@type': 'ImageObject',
-       '@id': `${seo?.image?.src ? `${Astro.site}${seo.image.src.replace('/', '')}` : `${Astro.site}og-image.webp`}`,
+       '@id': seo?.image?.src ? `${Astro.site}${seo.image.src.replace('/', '')}` : `${Astro.site}og-image.webp`,
        'url': seo?.image?.src ? `${Astro.site}${seo.image.src.replace('/', '')}` : `${Astro.site}og-image.webp`,
        'caption': seo?.image?.alt || '',
        'width': '1200',
        'height': '630'
    },
-   'author': {
-       '@type': 'Person',
-       '@id': `${Astro.site}#identity`,
-       'name': 'Filippo Danesi',
-       'url': Astro.site?.toString(),
-       'sameAs': [
-           'https://www.linkedin.com/in/filippodanesi/',
-           'https://github.com/filippodanesi/',
-           'https://x.com/filippodanesi'
-       ]
-   },
-   'publisher': {
-       '@type': 'Person',
-       '@id': `${Astro.site}#identity`,
-       'name': 'Filippo Danesi',
-       'url': Astro.site?.toString(),
-       'image': {
-           '@type': 'ImageObject',
-           '@id': `${siteConfig.image?.src}`,
-           'url': siteConfig.image?.src || '',
-           'width': '1200',
-           'height': '630'
-       }
-   },
+   'author': personInfo,
+   'publisher': personInfo,
    'inLanguage': 'en',
    'keywords': tags.join(', '),
    'articleSection': getArticleSection(tags),
    'wordCount': wordCount,
-   'isAccessibleForFree': true,
+   'isAccessibleForFree': 'http://schema.org/True',
    'copyrightYear': new Date(publishDate).getFullYear(),
    'copyrightHolder': {
        '@type': 'Person',
        'name': 'Filippo Danesi'
-   },
-   'about': tags.map(tag => ({
-       '@type': 'Thing',
-       '@id': `${Astro.site}category/${tag.toLowerCase()}/`,
-       'name': tag
-   }))
+   }
 };
 
 if (tags.length) {
