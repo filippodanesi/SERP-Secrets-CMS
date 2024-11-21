@@ -53,21 +53,14 @@ const structuredData = {
            'name': 'Filippo Danesi'
        }
    },
-    'image': (image || seo?.image) ? {
-        '@type': 'ImageObject',
-        '@id': `${image?.src || seo?.image?.src}`,
-        'url': (image?.src || seo?.image?.src),
-        'caption': (image?.alt || seo?.image?.alt || ''),
-        'width': '1200',
-        'height': '630'
-    } : {
-        '@type': 'ImageObject',
-        '@id': `${siteConfig.image?.src}`,
-        'url': siteConfig.image?.src || '',
-        'caption': siteConfig.image?.alt || '',
-        'width': '1200',
-        'height': '630'
-    },
+   'image': {
+       '@type': 'ImageObject',
+       '@id': `${seo?.image?.src ? `${Astro.site}${seo.image.src.replace('/', '')}` : `${Astro.site}og-image.webp`}`,
+       'url': seo?.image?.src ? `${Astro.site}${seo.image.src.replace('/', '')}` : `${Astro.site}og-image.webp`,
+       'caption': seo?.image?.alt || '',
+       'width': '1200',
+       'height': '630'
+   },
    'author': {
        '@type': 'Person',
        '@id': `${Astro.site}#identity`,
