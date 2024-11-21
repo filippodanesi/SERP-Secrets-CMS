@@ -74,7 +74,7 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Search',
-            href: '/search'
+            href: '/search/'
         }
     ],
     footerNavLinks: [
