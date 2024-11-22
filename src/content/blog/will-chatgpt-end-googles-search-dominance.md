@@ -22,7 +22,7 @@ The search engine landscape, long dominated by Google, is experiencing a **seism
 This question was recently posed by Rand Fishkin, who shared his analysis on X (formerly Twitter). The founder of SparkToro approached this complex question with a set of carefully considered assumptions, aiming to provide a clearer picture of the current search landscape:
 
 <blockquote class="twitter-tweet">
-    <a href="https://twitter.com/randfish/status/1858953453139382729">Loading...</a>
+    <a href="https://twitter.com/randfish/status/1858953453139382729">Tweet is loading...</a>
 </blockquote>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
