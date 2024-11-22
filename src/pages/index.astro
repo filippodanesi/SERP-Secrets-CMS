@@ -20,7 +20,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
     {
         posts.length > 0 && (
             <div class="mb-16 sm:mb-24">
-                <p class="mb-10 text-xl font-serif italic sm:mb-10 sm:text-2xl" style="color: rgb(var(--color-text-muted) / 0.6) !important;">Latest Posts</p>
+                {/* <p class="mb-10 text-xl font-serif italic sm:mb-10 sm:text-2xl" style="color: rgb(var(--color-text-muted) / 0.6) !important;">Latest Posts</p> */}
                 {posts.map((post) => (
                     <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
                 ))}
