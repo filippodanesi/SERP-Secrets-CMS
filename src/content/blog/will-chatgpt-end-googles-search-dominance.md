@@ -1,7 +1,7 @@
 ---
 title: "Will ChatGPT End Google's Search Dominance?"
 excerpt: "An analysis of ChatGPT's 4.33% search market share and its unprecedented growth, challenging Google's long-standing monopoly in just a few months."
-publishDate: '2023-11-22'
+publishDate: '2024-11-22'
 tags:
   - SEO News
 seo:
