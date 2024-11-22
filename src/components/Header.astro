@@ -2,14 +2,14 @@
 import siteConfig from '../data/site-config';
 ---
 
-<header class="w-full max-w-3xl mx-auto mb-10 sm:mb-12 border-b border-solid border-main pb-4">
+<header class="w-full max-w-3xl mx-auto mb-16 sm:mb-16 border-b border-solid border-main pb-4">
     {
         siteConfig.logo && siteConfig.logo?.src ? (
             <a href="/">
                 <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12" />
             </a>
         ) : (
-            <h1 class="font-serif text-3xl leading-tight font-medium text-theme-foreground sm:text-5xl">
+            <h1 class="font-serif text-4xl leading-tight font-medium text-theme-foreground sm:text-5xl">
                     {siteConfig.title}
             </h1>
         )
