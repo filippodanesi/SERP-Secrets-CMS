@@ -22,7 +22,7 @@ module.exports = {
             colors: {
                 customBlue: {
                   DEFAULT: 'rgb(28, 107, 187)',
-                  dark: 'rgba(28, 107, 187, 0.5)',
+                  dark: 'rgba(28, 107, 187, 0.9)',
                 },
               },
             typography: (theme) => ({
