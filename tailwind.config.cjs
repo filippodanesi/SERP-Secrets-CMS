@@ -21,8 +21,8 @@ module.exports = {
             },
             colors: {
                 customBlue: {
-                  DEFAULT: 'rgb(28, 107, 187)', // Colore base per modalità chiara
-                  dark: 'rgba(28, 107, 187, 0.7)', // Variante con opacità per modalità scura
+                  DEFAULT: 'rgb(28, 107, 187)',
+                  dark: 'rgba(28, 107, 187, 0.8)',
                 },
               },
             typography: (theme) => ({
