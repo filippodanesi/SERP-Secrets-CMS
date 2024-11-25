@@ -19,6 +19,12 @@ module.exports = {
             borderColor: {
                 main: 'rgb(var(--color-border-main) / <alpha-value>)'
             },
+            colors: {
+                customBlue: {
+                  DEFAULT: 'rgb(28, 107, 187)', // Colore base per modalità chiara
+                  dark: 'rgba(28, 107, 187, 0.7)', // Variante con opacità per modalità scura
+                },
+              },
             typography: (theme) => ({
                 dante: {
                     css: {
