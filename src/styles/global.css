@@ -38,6 +38,10 @@
     color: rgb(var(--color-text-muted) / 0.6) !important;
 }
 
+.prose :not(figcaption) > a {
+  @apply text-customBlue dark:text-customBlue-dark no-underline hover:underline;
+}
+
 /* Figures and image captions styles */
 figcaption, 
 figcaption a {
