@@ -38,8 +38,23 @@
     color: rgb(var(--color-text-muted) / 0.6) !important;
 }
 
+/* Style for links within .prose class */
 .prose :not(figcaption) > a {
-  @apply text-customBlue dark:text-customBlue-dark no-underline hover:underline;
+  --tw-text-opacity: 1;
+  color: rgb(28 107 187 / var(--tw-text-opacity));
+  text-decoration-line: none;
+}
+
+/* Dark mode for .prose links */
+html.dark .prose :not(figcaption) > a {
+  color: rgb(47 116 187 / var(--tw-text-opacity));
+}
+
+/* Override for links inside .not-prose */
+.not-prose a,
+.not-prose :not(figcaption) > a {
+  color: rgb(var(--color-text-main));
+  text-decoration-line: none;
 }
 
 /* Figures and image captions styles */
