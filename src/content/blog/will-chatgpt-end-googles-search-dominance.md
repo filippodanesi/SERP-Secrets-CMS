@@ -19,13 +19,7 @@ The search engine landscape, long dominated by Google, is experiencing a **seism
 
 ## The Current State of Search
 
-This question was recently posed by Rand Fishkin, who shared his analysis on X (formerly Twitter). The founder of SparkToro approached this complex question with a set of carefully considered assumptions, aiming to provide a clearer picture of the current search landscape:
-
-<blockquote class="twitter-tweet">
-    <a href="https://twitter.com/randfish/status/1858953453139382729">Tweet is loading...</a>
-</blockquote>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+This question [was recently posed by Rand Fishkin](https://twitter.com/randfish/status/1858953453139382729), who shared his analysis on X (formerly Twitter). The founder of SparkToro approached this complex question with a set of carefully considered assumptions, aiming to provide a clearer picture of the current search landscape.
 
 Based on these assumptions and using combined metrics from SimilarWeb and Datos, Fishkin's analysis reveals a fascinating breakdown of the current search market distribution as of October 2024:
 
