@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import netlify from '@astrojs/netlify/functions';
-import decapCmsOauth from "astro-decap-cms-oauth";
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
@@ -49,7 +48,6 @@ export default defineConfig({
     sitemap(),
     tailwind({ applyBaseStyles: false }),
     react(),
-    decapCmsOauth(),
     jopSoftwarecookieconsent({
       mode: 'opt-in',
       autoShow: true,
