@@ -46,8 +46,7 @@
 }
 
 html.dark .prose :not(figcaption) > a {
-  --tw-text-opacity: 1;
-  color: rgb(47 116 187 / var(--tw-text-opacity));
+    color: var(--color-bg-main);
 }
 
 .not-prose a,
