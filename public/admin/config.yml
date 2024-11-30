@@ -2,7 +2,7 @@ backend:
  name: github
  repo: filippodanesi/SERP-Secrets-CMS
  branch: main
- base_url: https://serp-secrets-cms.netlify.app
+ base_url: https://api.github.com
  auth_endpoint: oauth
 
 media_folder: "public"
