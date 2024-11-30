@@ -45,12 +45,11 @@
   text-decoration-line: none;
 }
 
-/* Dark mode for .prose links */
 html.dark .prose :not(figcaption) > a {
+  --tw-text-opacity: 1;
   color: rgb(47 116 187 / var(--tw-text-opacity));
 }
 
-/* Override for links inside .not-prose */
 .not-prose a,
 .not-prose :not(figcaption) > a {
   color: rgb(var(--color-text-main));
