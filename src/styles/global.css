@@ -46,7 +46,7 @@
 }
 
 html.dark .prose :not(figcaption) > a {
-    color: var(--color-bg-main);
+    color: var(--color-text-main);
     text-decoration-line: none;
 }
 
