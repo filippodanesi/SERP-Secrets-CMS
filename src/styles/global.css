@@ -20,7 +20,6 @@
 }
 
 /* Custom styles */
-
 .prose-dante :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     font-family: "Newsreader", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     font-weight: 500;
@@ -31,30 +30,6 @@
     object-fit: cover;
     width: 100%;
     height: auto;
-}
-
-.twitter-tweet {
-    font-size: 0.7rem !important;
-    color: rgb(var(--color-text-muted) / 0.6) !important;
-}
-
-/* Style for links within .prose class */
-.prose :not(figcaption) > a {
-  --tw-text-opacity: 1;
-  color: rgb(28 107 187 / var(--tw-text-opacity));
-  text-decoration-line: none;
-}
-
-html.dark .prose :not(figcaption) > a {
-  --tw-text-opacity: 1;
-  color: rgb(28 107 187 / var(--tw-text-opacity));
-  text-decoration-line: none;
-}
-
-.not-prose a,
-.not-prose :not(figcaption) > a {
-  color: rgb(var(--color-text-main));
-  text-decoration-line: none;
 }
 
 /* Figures and image captions styles */
