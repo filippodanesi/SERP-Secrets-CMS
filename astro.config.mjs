@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import netlify from '@astrojs/netlify/functions';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
@@ -9,10 +9,7 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 export default defineConfig({
   site: 'https://www.serp-secrets.com',
   output: 'server',
-  adapter: vercel({
-    webAnalytics: { enabled: false },
-    isr: { expiration: 60 * 60 * 24 },
-  }),
+  adapter: netlify(),
   trailingSlash: 'always',
   markdown: {
     remarkPlugins: [remarkReadingTime],
