@@ -1,0 +1,46 @@
+backend:
+ name: github
+ repo: filippodanesi/SERP-Secrets-CMS
+ branch: main
+ base_url: https://serp-secrets-cms.netlify.app
+ auth_endpoint: oauth
+
+media_folder: "public"
+public_folder: "/"
+
+collections:
+ - name: "blog"
+   label: "Blog"
+   folder: "src/content/blog"
+   create: true
+   slug: "{{slug}}"
+   fields:
+     - {label: "Title", name: "title", widget: "string"}
+     - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+     - {label: "Publish Date", name: "publishDate", widget: "datetime"}
+     - {label: "Updated Date", name: "updatedDate", widget: "datetime", required: false}
+     - {label: "Featured", name: "isFeatured", widget: "boolean", default: false}
+     - label: "Image"
+       name: "image"
+       widget: "object"
+       required: false
+       fields:
+         - {label: "Source", name: "src", widget: "string"}
+         - {label: "Alt Text", name: "alt", widget: "string", required: false}
+     - {label: "Tags", name: "tags", widget: "list", default: []}
+     - label: "SEO"
+       name: "seo"
+       widget: "object"
+       required: false
+       fields:
+         - {label: "Title", name: "title", widget: "string", required: false}
+         - {label: "Description", name: "description", widget: "string", required: false}
+         - label: "Image"
+           name: "image"
+           widget: "object"
+           required: false
+           fields:
+             - {label: "Source", name: "src", widget: "string"}
+             - {label: "Alt Text", name: "alt", widget: "string", required: false}
+         - {label: "Page Type", name: "pageType", widget: "select", options: ["website", "article"], default: "website"}
+     - {label: "Body", name: "body", widget: "markdown"}
