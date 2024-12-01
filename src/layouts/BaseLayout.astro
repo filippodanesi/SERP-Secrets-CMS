@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -42,8 +41,6 @@ const headProps = {
                 document.documentElement.classList.add('cc--darkmode');
             }
         </script>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-        <!-- <ViewTransitions /> -->
     </head>
     <body class="bg-main text-main">
         <div class="flex flex-col min-h-screen px-4 md:px-8">
@@ -54,16 +51,5 @@ const headProps = {
             </main>
             <Footer />
         </div>
-        <script>
-            if (window.netlifyIdentity) {
-                window.netlifyIdentity.on("init", user => {
-                    if (!user) {
-                        window.netlifyIdentity.on("login", () => {
-                            document.location.href = "/admin/";
-                        });
-                    }
-                });
-            }
-        </script>
     </body>
 </html>
