@@ -10,7 +10,7 @@ export default defineConfig({
   site: 'https://www.serp-secrets.com',
   output: 'server',
   adapter: netlify(),
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
