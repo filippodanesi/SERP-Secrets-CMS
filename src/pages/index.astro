@@ -16,11 +16,12 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
     image={siteConfig.image}
     isHome={true}
 >
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
    <BlogStructuredData slot="structured-data" posts={posts} />
     {
         posts.length > 0 && (
             <div class="mb-16 sm:mb-24">
-                {/* <p class="mb-12 sm:mb-16 text-xl font-serif italic sm:mb-10 sm:text-2xl" style="color: rgb(var(--color-text-muted) / 0.6) !important;">Latest Posts</p> */}
+                {/* <p class="mb-12 text-xl font-serif italic sm:mb-10 sm:text-2xl" style="color: rgb(var(--color-text-muted) / 0.6) !important;">Latest Posts</p> */}
                 {posts.map((post) => (
                     <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
                 ))}
@@ -30,4 +31,15 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
             </div>
         )
     }
+    <script>
+        if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+            if (!user) {
+            window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+            });
+            }
+        });
+        }
+    </script>
 </BaseLayout>
