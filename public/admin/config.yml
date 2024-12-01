@@ -1,43 +1,61 @@
 backend:
   name: git-gateway
   branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
 
-media_folder: "public"
-public_folder: "/"
+# These lines are used to enable the CMS preview functionality
+# site_url: https://serp-secrets.com
+# display_url: https://serp-secrets.com
+# logo_url: https://serp-secrets.com/logo_white.svg
+
+# Enable editorial workflow (optional)
+# publish_mode: editorial_workflow
+
+media_folder: "public/blog-images"
+public_folder: "/blog-images"
 
 collections:
- - name: "blog"
-   label: "Blog"
-   folder: "src/content/blog"
-   create: true
-   slug: "{{slug}}"
-   fields:
-     - {label: "Title", name: "title", widget: "string"}
-     - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
-     - {label: "Publish Date", name: "publishDate", widget: "datetime"}
-     - {label: "Updated Date", name: "updatedDate", widget: "datetime", required: false}
-     - {label: "Featured", name: "isFeatured", widget: "boolean", default: false}
-     - label: "Image"
-       name: "image"
-       widget: "object"
-       required: false
-       fields:
-         - {label: "Source", name: "src", widget: "string"}
-         - {label: "Alt Text", name: "alt", widget: "string", required: false}
-     - {label: "Tags", name: "tags", widget: "list", default: []}
-     - label: "SEO"
-       name: "seo"
-       widget: "object"
-       required: false
-       fields:
-         - {label: "Title", name: "title", widget: "string", required: false}
-         - {label: "Description", name: "description", widget: "string", required: false}
-         - label: "Image"
-           name: "image"
-           widget: "object"
-           required: false
-           fields:
-             - {label: "Source", name: "src", widget: "string"}
-             - {label: "Alt Text", name: "alt", widget: "string", required: false}
-         - {label: "Page Type", name: "pageType", widget: "select", options: ["website", "article"], default: "website"}
-     - {label: "Body", name: "body", widget: "markdown"}
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+      - {label: "Publish Date", name: "publishDate", widget: "datetime", required: false, default: null, condition: {field: updatedDate, value: false}}
+      - {label: "Updated Date", name: "updatedDate", widget: "datetime", required: false}
+      - {label: "Featured", name: "isFeatured", widget: "boolean", default: false}
+      - label: "Image"
+        name: "image"
+        widget: "object"
+        fields:
+          - {label: "Image", name: "src", widget: "image"}
+          - {label: "Alt Text", name: "alt", widget: "string"}
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        options: ["SEO News", "SEO Strategies", "Technical SEO", "Artificial Intelligence"]
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Title", name: "title", widget: "string", required: false}
+          - {label: "Description", name: "description", widget: "string", required: false}
+          - label: "Image"
+            name: "image"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Source", name: "src", widget: "string"}
+              - {label: "Alt Text", name: "alt", widget: "string", required: false}
+          - {label: "Page Type", name: "pageType", widget: "select", options: ["website", "article"], default: "website"}
+      - {label: "Body", name: "body", widget: "markdown"}
