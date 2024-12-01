@@ -10,8 +10,8 @@ image:
 tags:
   - SEO News
 seo:
-  title: ""
-  description: ""
+  title: Prova
+  description: Prova di meta description
 pageType: website
 ---
 Prova
