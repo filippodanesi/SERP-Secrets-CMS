@@ -16,7 +16,7 @@ const posts = (await getCollection('blog')).sort(sortItemsByDateDesc).slice(0, 5
     image={siteConfig.image}
     isHome={true}
 >
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+   <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
    <BlogStructuredData slot="structured-data" posts={posts} />
     {
         posts.length > 0 && (
