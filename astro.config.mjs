@@ -9,8 +9,10 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 export default defineConfig({
   site: 'https://www.serp-secrets.com',
   output: 'server',
-  adapter: netlify(),
-  trailingSlash: 'always',
+  adapter: netlify({
+    edge: false
+  }),
+  trailingSlash: 'never',
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
