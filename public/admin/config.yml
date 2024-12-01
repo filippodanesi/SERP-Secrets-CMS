@@ -29,8 +29,8 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
-      - {label: "Publish Date", name: "publishDate", widget: "datetime", required: false, default: null, condition: {field: updatedDate, value: false}}
-      - {label: "Updated Date", name: "updatedDate", widget: "datetime", required: false}
+      - {label: "Publish Date", name: "publishDate", widget: "datetime", hint: "Used only if no Updated Date is set"}
+      - {label: "Updated Date", name: "updatedDate", widget: "datetime", required: false, hint: "When set, this will override the Publish Date"}
       - {label: "Featured", name: "isFeatured", widget: "boolean", default: false}
       - label: "Image"
         name: "image"
@@ -50,12 +50,5 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string", required: false}
           - {label: "Description", name: "description", widget: "string", required: false}
-          - label: "Image"
-            name: "image"
-            widget: "object"
-            required: false
-            fields:
-              - {label: "Source", name: "src", widget: "string"}
-              - {label: "Alt Text", name: "alt", widget: "string", required: false}
-          - {label: "Page Type", name: "pageType", widget: "select", options: ["website", "article"], default: "website"}
+      - {label: "Page Type", name: "pageType", widget: "select", options: ["website", "article"], default: "website"}
       - {label: "Body", name: "body", widget: "markdown"}
