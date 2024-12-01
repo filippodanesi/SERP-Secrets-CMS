@@ -6,9 +6,6 @@ seo:
   description: Our Cookie Policy explains what cookies are and how we use them on our website.
 ---
  
-##### **Last Updated**: 09-Nov-2024
-
-
 ## What are cookies?
 
 This Cookie Policy explains what cookies are and how we use them, the types of cookies we use (i.e., the information we collect using cookies and how that information is used), and how to manage the cookie settings.
@@ -51,3 +48,5 @@ In addition to this, different browsers provide different methods to block and d
 - [Internet Explorer](https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc)
 
 If you are using any other web browser, please visit your browser's official support documents.
+
+_**Last Updated**: 09-Nov-2024_

@@ -58,3 +58,5 @@ We may update this privacy policy from time to time to reflect changes to our pr
 ## Contact information
 
 For any questions or concerns about our privacy policy or your personal data, please contact us at [privacy@filippodanesi.it](mailto:privacy@filippodanesi.it).
+
+_**Last Updated**: 09-Nov-2024_
