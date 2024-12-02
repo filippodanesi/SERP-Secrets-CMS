@@ -1,4 +1,3 @@
-local_backend: true
 backend:
   name: git-gateway
   branch: main
@@ -8,6 +7,8 @@ backend:
     delete: 'Delete {{collection}} "{{slug}}"'
     uploadMedia: 'Upload "{{path}}"'
     deleteMedia: 'Delete "{{path}}"'
+
+local_backend: true    
 
 # These lines are used to enable the CMS preview functionality
 # site_url: https://serp-secrets.com
